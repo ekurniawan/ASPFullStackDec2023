@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p class="lead">Hello @User.Identity.Name</p>
+    }
+
+    <!-- an h1 with inline blue color -->
+    <h1 style="color:blue">Hello World</h1>
+    <!-- create a bulleted list -->
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+
+</div>

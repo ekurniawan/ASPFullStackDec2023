@@ -1,0 +1,12 @@
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome To Employee Page</h1>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p class="lead">Hello @User.Identity.Name</p>
+    }
+    <p></p>
+</div>

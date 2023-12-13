@@ -1,0 +1,67 @@
+@model IEnumerable<SampleASPCore.ViewModels.EmployeeWithProjectViewModel>
+@{
+    ViewData["Title"] = "GetEmployeeWithProject";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card mb-4">
+            <div class="card-header">
+                Daftar Employees
+            </div>
+            <div class="card-body">
+                @if (ViewData["Pesan"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Success!</strong> @ViewData["Pesan"]
+                    </div>
+                }
+
+                <a asp-action="Create" class="btn btn-success btn-sm">Create Employee</a>
+                <table class="table table-striped">
+                    <tr>
+                        <td>Employee ID</td>
+                        <td>Full Name</td>
+                        <td>Email</td>
+                        <td>Address</td>
+                        <td>Department</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    @foreach (var emp in Model)
+                    {
+                        <tr>
+                            <td>@emp.EmployeeID</td>
+                            <td>@emp.FullName</td>
+                            <td>@emp.Email</td>
+                            <td>@emp.Address</td>
+                            <td>@emp.Department.DepartmentName</td>
+                            <td>
+                                <table class="table table-striped">
+                                    <tr>
+                                        <td>ProjectID</td>
+                                        <td>Project Name</td>
+                                    </tr>
+                                    @foreach (var project in emp.Projects)
+                                    {
+                                        <tr>
+                                            <td>@project.ProjectID</td>
+                                            <td>@project.ProjectName</td>
+                                        </tr>
+                                    }
+                                </table>
+                            </td>
+                            <td><a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@emp.EmployeeID">edit</a>
+                            </td>
+                            <td><a class="btn btn-danger btn-sm" asp-action="Delete"
+                                    asp-route-id="@emp.EmployeeID">delete</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
